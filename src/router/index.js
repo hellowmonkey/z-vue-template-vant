@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import 'nprogress/nprogress.css'
 import NProgress from 'nprogress'
+import store from '../store'
 
 Vue.use(Router)
 
