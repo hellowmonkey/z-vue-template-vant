@@ -9,18 +9,17 @@ import router from '../router'
 flyio.interceptors.request.use((conf) => {
     conf.baseURL = config.baseURL
     conf.headers['Content-Type'] = conf.contentType || config.contentType
-    conf.headers.token = store.state.token
+    conf.headers.token = store.state.user.token
     conf.timeout = 0
     let params = {}
     if (conf.body) {
-        params = JSON.parse(JSON.stringify(conf.body))
-    }
-    for (let key in params) {
-        const item = params[key]
-        if (isEmpty(item)) delete params[key]
-        if (typeof item === 'string') params[key] = item.trim()
-        // 去除store的update参数
-        if (key === 'update' && (item === true || item === false)) delete params[key]
+        for (let key in conf.body) {
+            let item = conf.body[key]
+            if (!isEmpty(item)) {
+                if (typeof item === 'string') item = item.trim()
+                params[key] = item
+            }
+        }
     }
     conf.body = params
     return conf

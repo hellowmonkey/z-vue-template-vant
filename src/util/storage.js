@@ -11,7 +11,7 @@ const isJsonString = (str) => {
     return false
 }
 
-const fn = (storage = l) => {
+const fn = (storage = s) => {
     return {
         get (key) {
             let data = storage.getItem(key)

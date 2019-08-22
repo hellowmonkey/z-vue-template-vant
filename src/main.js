@@ -22,13 +22,6 @@ router.onReady(route => {
     const user = storage.get('user')
     if (user) {
         vm.$store.commit('setUser', user)
-    } else if (!route || route.name !== 'login') {
-        // router.replace({
-        //     name: 'login',
-        //     query: {
-        //         redirect: route && route.fullPath
-        //     }
-        // })
     }
     vm.$mount('#app')
 })

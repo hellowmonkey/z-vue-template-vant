@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import 'nprogress/nprogress.css'
 import NProgress from 'nprogress'
 
 Vue.use(Router)
@@ -7,13 +8,15 @@ Vue.use(Router)
 NProgress.inc(0.2)
 NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
 
+export const routes = [{
+    path: '/',
+    component: () => import('../page/index.vue'),
+    name: 'index'
+}]
+
 const router = new Router({
     mode: 'history',
-    routes: [{
-        path: '/',
-        component: () => import('../views/index.vue'),
-        name: 'index'
-    }],
+    routes,
     fallback: true,
     scrollBehavior (to, from, savedPosition) {
         if (savedPosition) {
@@ -26,20 +29,24 @@ const router = new Router({
     }
 })
 
+const filterParams = (query = {}) => {
+    for (let item in query) {
+        const data = query[item]
+        if (/^[\d]+$/.test(data)) {
+            query[item] = Number(data)
+        }
+    }
+    return query
+}
+
 router.beforeEach(async (to, from, next) => {
     NProgress.done().start()
-    for (let item in to.query) {
-        const data = to.query[item]
-        if (/^[\d]+$/.test(data)) {
-            to.query[item] = Number(data)
-        }
+    const { title } = to.meta
+    if (title) {
+        store.commit('setTitle', title)
     }
-    for (let item in to.params) {
-        const data = to.params[item]
-        if (/^[\d]+$/.test(data)) {
-            to.params[item] = Number(data)
-        }
-    }
+    filterParams(to.query)
+    filterParams(to.params)
     next()
 })
 
