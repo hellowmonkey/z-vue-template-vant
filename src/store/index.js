@@ -10,7 +10,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
         user: null,
-        title: '',
+        title: ''
     },
     mutations: {
         setUser (state, data = {}) {
@@ -28,7 +28,7 @@ const store = new Vuex.Store({
         setTitle (state, data) {
             state.title = data
             document.title = data
-        },
+        }
     },
     actions: {
 

@@ -37,7 +37,7 @@ flyio.interceptors.response.use((response) => {
     if (code !== 200) {
         err.message = data.message || `${code}`
         console.error(err)
-        alert(`操作失败: ${err.message}`)
+        Vue.prototype.$toast.fail(`操作失败: ${err.message}`)
         if (code === config.errorLogin) {
             return router.replace({ name: 'login' })
         }
@@ -67,7 +67,11 @@ flyio.interceptors.response.use((response) => {
             err.message = messages[err.status]
         }
     }
-    alert(err.message)
+    Vue.prototype.$dialog({
+        title: '请求失败',
+        message: err.message,
+        showCancelButton: false
+    })
     return Promise.reject(error)
 })
 

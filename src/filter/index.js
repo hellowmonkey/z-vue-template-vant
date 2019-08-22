@@ -16,4 +16,3 @@ Vue.filter('textFilter', (data, type) => {
     const { text } = (getVariableItem(type, data) || {})
     return text || ''
 })
-

@@ -1,6 +1,6 @@
 <template>
     <div>
-        Hi
+        <van-button>aaa</van-button>
     </div>
 </template>
 
@@ -11,7 +11,7 @@ export default {
         ...mapActions('user', ['getTest'])
     },
     mounted () {
-        // this.getTest()
+        this.getTest()
     }
 }
 </script>
