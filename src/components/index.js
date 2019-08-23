@@ -159,6 +159,17 @@ Vue.use(Dialog)
 Vue.use(Notify)
 Vue.use(ImagePreview)
 
+const loading = (message = '数据加载中...') => {
+    const toast = Toast.loading({
+        duration: 0, // 持续展示 toast
+        forbidClick: true, // 禁用背景点击
+        loadingType: 'spinner',
+        message
+    })
+    return toast.clear
+}
+Vue.prototype.$loading = loading
+
 store.$toast = Toast
 store.$dialog = Dialog
-store.notify = Notify
+store.$notify = Notify
