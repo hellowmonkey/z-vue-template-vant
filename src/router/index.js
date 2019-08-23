@@ -36,6 +36,7 @@ const filterParams = (query = {}) => {
         if (/^[\d]+$/.test(data)) {
             query[item] = Number(data)
         }
+        if (typeof data === 'string') query[item] = data.trim()
     }
     return query
 }
