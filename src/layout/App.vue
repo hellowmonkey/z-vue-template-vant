@@ -4,5 +4,5 @@
     </div>
 </template>
 <style lang="less">
-@import '../assets/style/app.less';
+@import '../static/style/app.less';
 </style>

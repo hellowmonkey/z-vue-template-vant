@@ -33,10 +33,10 @@ const router = new Router({
 const filterParams = (query = {}) => {
     for (let item in query) {
         const data = query[item]
+        if (typeof data === 'string') query[item] = data.trim()
         if (/^[\d]+$/.test(data)) {
             query[item] = Number(data)
         }
-        if (typeof data === 'string') query[item] = data.trim()
     }
     return query
 }
