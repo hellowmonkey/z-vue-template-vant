@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 import { sessionStorage } from '../util/storage'
 
-import user from './modules/user'
+import user from './module/user'
 
 Vue.use(Vuex)
 
