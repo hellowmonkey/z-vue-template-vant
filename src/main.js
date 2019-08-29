@@ -3,6 +3,7 @@ import App from './layout/App.vue'
 import router from './router'
 import store from './store'
 import storage from './util/storage'
+import config from './config'
 
 import './component'
 import './plugin/ajax'
@@ -11,6 +12,12 @@ import './filter'
 import './mixin'
 
 Vue.config.productionTip = false
+
+if (config.isDev || config.isTest) {
+    const VConsole = require('vconsole')
+    // eslint-disable-next-line no-new
+    new VConsole()
+}
 
 const vm = new Vue({
     router,
