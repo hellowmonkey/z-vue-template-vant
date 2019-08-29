@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import storage from './util/storage'
 
-import './components'
+import './component'
 import './plugin/ajax'
 import './plugin/dayjs'
 import './filter'
