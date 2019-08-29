@@ -11,7 +11,11 @@ export default {
         ...mapActions('user', ['getTest'])
     },
     mounted () {
-        this.getTest()
+        // this.getTest()
+        const hide = this.$loading()
+        setTimeout(() => {
+            hide()
+        }, 3000)
     }
 }
 </script>
