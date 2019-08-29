@@ -161,4 +161,4 @@ Vue.use(ImagePreview)
 
 store.$toast = Toast
 store.$dialog = Dialog
-store.notify = Notify
+store.$notify = Notify
